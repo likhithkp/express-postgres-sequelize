@@ -1,4 +1,4 @@
-const { Model, Sequelize } = require('sequelize');
+const { Sequelize } = require('sequelize');
 const sequelize = require('../../config/database');
 
 module.exports = sequelize.define("user", {
