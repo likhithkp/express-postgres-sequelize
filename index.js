@@ -7,8 +7,8 @@ app.use(express.json());
 
 app.post("/createUser", async (req, res) => {
     try {
-        const {email, first_name, middle_name, last_name, mob_no, whatsapp_no} = req.body;
-        const user =  await models.users.create({
+        const { email, first_name, middle_name, last_name, mob_no, whatsapp_no } = req.body;
+        const user = await models.users.create({
             email,
             first_name,
             middle_name,
@@ -25,8 +25,8 @@ app.post("/createUser", async (req, res) => {
 
 app.post("/createOrder", async (req, res) => {
     try {
-        const {user_id } = req.body;
-        const order =  await models.orders.create({
+        const { user_id } = req.body;
+        const order = await models.orders.create({
             user_id,
         })
         await order.save()
@@ -61,7 +61,7 @@ app.post("/updateOrder/:id", async (req, res) => {
         const { user_id } = req.body;
         // Fetch orders associated with the provided user_id
         const orders = await models.orders.update({
-            id: {user_id}
+            id: { user_id }
         }, { where: { user_id } });
 
         // Send the response
@@ -97,8 +97,5 @@ app.delete("/deleteOrders/:user_id", async (req, res) => {
     }
 });
 
-
-
-
-const PORT = process.env.APP_PORT || 3001; 
+const PORT = process.env.APP_PORT || 3001;
 app.listen(PORT);
