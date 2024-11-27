@@ -4,6 +4,8 @@ require('dotenv').config();
 const authRouter = require("./src/routes/authRouter");
 const app = express();
 
+app.use(express.json());
+
 app.use("/auth", authRouter);
 app.use("*", (req, res, next) => {
     res.status(404).json({
