@@ -26,17 +26,20 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
     },
-  },{
+  }, {
     // Disable Sequelize's default timestamps
     timestamps: true,
     // Specify custom column names for the timestamps
     createdAt: 'created_at',
     updatedAt: 'updated_at',
-});
+  });
 
   Orders.prototype.setAssociation = (models) => {
-    // Defining the reverse association (Order -> User)
     Orders.belongsTo(models.users, { foreignKey: 'user_id' });
+    Orders.belongsToMany(models.transactions, {
+      through: 'order_transactions',
+      foreignKey: 'order_id',
+    });
   };
 
   return Orders;

@@ -44,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     Users.prototype.setAssociation = (models) => {
       // Setting the association here, consistent with Sequelize's convention
       Users.hasMany(models.orders, { foreignKey: 'user_id' });
+      Users.hasMany(models.transactions, { foreignKey: 'user_id' });
     };
 
     return Users;
