@@ -1,6 +1,6 @@
-const User = require("../../db/models/users");
+const { models } = require("../../db");
 
-class Services {
+class User {
   constructor() {
     this.entity = 'users';
   }
@@ -27,4 +27,4 @@ class Services {
 
 }
 
-module.exports = Services;
+module.exports = User;
